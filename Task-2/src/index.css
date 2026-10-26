@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-canvas: #11141a;
+  /* deep obsidian charcoal */
+  --color-sage: #9eaf97;
+  /* lines, borders, accents */
+  --color-ivory: #faf9f6;
+  /* reading layer */
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* Page foundation: dark canvas, ivory text, Inter as the default face. */
+@layer base {
+  html {
+    background-color: var(--color-canvas);
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-variant-numeric: lining-nums;
+    background-color: var(--color-canvas);
+    color: var(--color-ivory);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-sage);
+    color: var(--color-canvas);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

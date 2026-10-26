@@ -1,0 +1,70 @@
+# Vapor
+
+Visualizing the unseen atmosphere.
+
+Vapor is a weather dashboard built for the Auspify Technologies Frontend Developer Internship (Task 4, Weather Dashboard Using API). It shows live weather for any city or country, with a banner image that changes to match the current conditions.
+
+
+## Features
+
+- Landing page with a sky background, slow zoom, mouse parallax, cursor glow and a fade transition into the dashboard
+- Search by city or country name
+- Current temperature, feels like, humidity, wind speed, UV index, sunrise and sunset
+- Hourly chart for today with Temperature, Precipitation and Wind views
+- 7 day forecast
+- Banner image that changes with the weather (sunny, cloudy, rainy, windy, snow, night)
+- Error handling for empty input, unknown places, API failures and no internet connection
+- Remembers the last searched place using Local Storage
+- Responsive layout for mobile and desktop
+
+## Built With
+
+- HTML5
+- Tailwind CSS (CDN)
+- JavaScript (Fetch API, async/await, JSON handling)
+- Chart.js
+- Font Awesome
+
+## APIs Used
+
+- [Open-Meteo](https://open-meteo.com/) for weather data (no API key needed)
+- [Nominatim (OpenStreetMap)](https://nominatim.org/) for converting a city or country name into coordinates
+
+## How the Banner Image Is Chosen
+
+The banner is picked in this order, using the first condition that matches:
+
+|     Image     |             Condition                    |
+| `snow.jpg`    | Snowfall, or temperature of 5°C or below |
+| `rainy.jpg`   | Drizzle, rain, showers or thunderstorm   |
+| `windy.jpg`   | Wind speed of 30 km/h or more            |
+| `night.jpg`   | After sunset                             |
+| `cloudy.jpg`  | Overcast or fog                          |
+| `sunny.jpg`   | Everything else                          |
+
+## Project Structure
+
+task4-weather-dashboard/
+├── index.html      Landing page
+├── landing.js      Landing page interactions
+├── weather.html    Weather dashboard
+├── weather.js      API calls, chart and page updates
+├── images/         Background and weather banner images
+└── README.md
+
+
+## How to Run
+
+1. Download or clone the repository.
+2. Open the `task4-weather-dashboard` folder in VS Code.
+3. Start it with the Live Server extension, or open `index.html` in a browser.
+4. An internet connection is required for the APIs, Tailwind, Chart.js and Font Awesome.
+
+## Live demo:
+https://USERNAME.github.io/REPO-NAME/task4-weather-dashboard/
+
+## Author
+
+Hiba Mateen
+
+Built as part of the Auspify Technologies Internship Program.

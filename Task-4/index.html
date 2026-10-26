@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        .sky {
+            background:
+                url("./Images/background.png") center / cover,
+                linear-gradient(180deg, #7fd3ee 0%, #cdeef7 45%, #ffffff 100%);
+            animation: slow-zoom 30s ease-in-out infinite alternate;
+        }
+
+        .glow {
+            display: none;
+            background: radial-gradient(circle 100px at var(--glow-x, 50%) var(--glow-y, 40%), rgba(255, 255, 255, 0.55), transparent);
+        }
+
+        .rise-in {
+            animation: rise-in 0.9s ease-out backwards;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes slow-zoom {
+            to {
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
+        @media (hover: hover) {
+            .glow {
+                display: block;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .sky,
+            .rise-in {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="relative min-h-screen overflow-hidden font-sans text-[#1f3447] transition-opacity duration-500">
+
+    <div id="sky-layer" class="fixed -inset-6 overflow-hidden transition-transform duration-700 ease-out"
+        aria-hidden="true">
+        <div class="sky h-full w-full"></div>
+    </div>
+    <div class="glow pointer-events-none fixed inset-0" aria-hidden="true"></div>
+
+    <main class="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+        <h1 class="rise-in text-5xl font-light uppercase tracking-[0.3em] sm:text-7xl" style="--delay: 0.2s">
+            vapor
+        </h1>
+        <p class="rise-in text-sm italic text-opacity-120 py-4" style="--delay: 0.4s">
+            Visualizing the unseen atmosphere.
+        </p>
+
+        <a id="weather-link" href="weather.html"
+            class="rise-in group mt-12 inline-flex items-center gap-3 border-b border-[#1f3447]/50 pb-1.5 text-sm uppercase tracking-[0.2em] transition hover:-translate-y-0.5 hover:border-[#1f3447] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f3447]"
+            style="--delay: 0.6s">
+            Check weather in your city/country
+            <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+        </a>
+    </main>
+
+    <footer class="absolute inset-x-0 bottom-0 flex justify-between px-6 py-5 text-xs text-[#1f3447]/70">
+        <p>Weather data by Open-Meteo</p>
+        <p>Made by Hiba Mateen</p>
+    </footer>
+
+    <script src="landing.js"></script>
+</body>
+
+</html>
